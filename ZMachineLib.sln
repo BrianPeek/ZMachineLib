@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMachineLib", "ZMachineLib\ZMachineLib.csproj", "{8130AB87-4AD2-4025-BBE8-FA1D06F6DF9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleZMachine", "ConsoleZMachine\ConsoleZMachine.csproj", "{D85E0558-A1C2-4B81-9718-7F371F844DD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8130AB87-4AD2-4025-BBE8-FA1D06F6DF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8130AB87-4AD2-4025-BBE8-FA1D06F6DF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8130AB87-4AD2-4025-BBE8-FA1D06F6DF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8130AB87-4AD2-4025-BBE8-FA1D06F6DF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D85E0558-A1C2-4B81-9718-7F371F844DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85E0558-A1C2-4B81-9718-7F371F844DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85E0558-A1C2-4B81-9718-7F371F844DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85E0558-A1C2-4B81-9718-7F371F844DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
