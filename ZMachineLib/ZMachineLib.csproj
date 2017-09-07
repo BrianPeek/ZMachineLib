@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Brian Peek</Authors>
+    <Company>Brian Peek</Company>
+    <Description>A ZMachine interpreter supporting v1-v5 games written in C#.</Description>
+    <Copyright>Copyright © 2016 Brian Peek</Copyright>
+    <PackageLicenseUrl>https://github.com/BrianPeek/ZMachineLib/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/BrianPeek/ZMachineLib</PackageProjectUrl>
+    <PackageTags>zmachine z-machine infocom if interactive fiction text adventure</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
