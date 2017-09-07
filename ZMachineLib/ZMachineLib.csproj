@@ -6,10 +6,12 @@
     <Authors>Brian Peek</Authors>
     <Company>Brian Peek</Company>
     <Description>A ZMachine interpreter supporting v1-v5 games written in C#.</Description>
-    <Copyright>Copyright © 2016 Brian Peek</Copyright>
+    <Copyright>Copyright © 2017 Brian Peek</Copyright>
     <PackageLicenseUrl>https://github.com/BrianPeek/ZMachineLib/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/BrianPeek/ZMachineLib</PackageProjectUrl>
     <PackageTags>zmachine z-machine infocom if interactive fiction text adventure</PackageTags>
+    <Version>1.0.0</Version>
+	<PackageVersion>1.0.0</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
