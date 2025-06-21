@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMachineLib", "ZMachineLib\ZMachineLib.csproj", "{8130AB87-4AD2-4025-BBE8-FA1D06F6DF9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleZMachine", "ConsoleZMachine\ConsoleZMachine.csproj", "{D85E0558-A1C2-4B81-9718-7F371F844DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleZMachine", "ConsoleZMachine\ConsoleZMachine.csproj", "{D85E0558-A1C2-4B81-9718-7F371F844DD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

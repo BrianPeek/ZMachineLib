@@ -9,7 +9,7 @@ namespace ConsoleZMachine
 		{
 			ZMachine zMachine = new ZMachine(new ConsoleIO());
 
-			FileStream fs = File.OpenRead(@"zork1.dat");
+			FileStream fs = File.OpenRead(args[0]);
 			zMachine.LoadFile(fs);
 			zMachine.Run();
 		}

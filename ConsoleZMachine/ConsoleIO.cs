@@ -14,81 +14,91 @@ namespace ConsoleZMachine
 
 		public ConsoleIO()
 		{
-			Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
-			Console.SetCursorPosition(0, Console.WindowHeight-1);
-			_defaultFore = Console.ForegroundColor;
-			_defaultBack = Console.BackgroundColor;
-		}
-
-		public void Print(string s)
-		{
-			for(int i = 0; i < s.Length; i++)
-			{
-				if(s[i] == ' ')
-				{
-					int next = s.IndexOf(' ', i+1);
-					if(next == -1)
-						next = s.Length;
-					if(next >= 0)
-					{
-						if(Console.CursorLeft + (next - i) >= Console.WindowWidth)
-						{
-							Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
-							Console.WriteLine("");
-
-							i++;
-						}
-					}
-				}
-
-				if(i < s.Length && s[i] == Environment.NewLine[0])
-					Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
-
-				if(i < s.Length)
-					Console.Write(s[i]);
-			}
-		}
-
-		public string Read(int max)
-		{
-#if SIMPLE_IO
-			string s = Console.ReadLine();
-			Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
-			return s?.Substring(0, Math.Min(s.Length, max));
-#else
-			string s = string.Empty;
-			ConsoleKeyInfo key = new ConsoleKeyInfo();
-
-			do
-			{
-				if(Console.KeyAvailable)
-				{
-					key = Console.ReadKey(true);
-					switch(key.Key)
-					{
-						case ConsoleKey.Backspace:
-							if(s.Length > 0)
-							{
-								s = s.Remove(s.Length-1, 1);
-								Console.Write(key.KeyChar);
-							}
-							break;
-						case ConsoleKey.Enter:
-							break;
-						default:
-							s += key.KeyChar;
-							Console.Write(key.KeyChar);
-							break;
-					}
-				}
-			}
-			while(key.Key != ConsoleKey.Enter);
-
-			Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
-			Console.WriteLine(string.Empty);
-			return s;
+#if WINDOWS
+            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
+            Console.SetCursorPosition(0, Console.WindowHeight-1);
 #endif
-		}
+            _defaultFore = Console.ForegroundColor;
+            _defaultBack = Console.BackgroundColor;
+        }
+
+        public void Print(string s)
+        {
+            for(int i = 0; i < s.Length; i++)
+            {
+                if(s[i] == ' ')
+                {
+                    int next = s.IndexOf(' ', i+1);
+                    if(next == -1)
+                        next = s.Length;
+                    if(next >= 0)
+                    {
+#if WINDOWS
+                        if(Console.CursorLeft + (next - i) >= Console.WindowWidth)
+                        {
+                            Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
+                            Console.WriteLine("");
+
+                            i++;
+                        }
+#endif
+                    }
+                }
+
+#if WINDOWS
+                if(i < s.Length && s[i] == Environment.NewLine[0])
+                    Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
+#endif
+
+                if(i < s.Length)
+                    Console.Write(s[i]);
+            }
+        }
+
+        public string Read(int max)
+        {
+#if SIMPLE_IO
+            string s = Console.ReadLine();
+#if WINDOWS
+            Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
+#endif
+            return s?.Substring(0, Math.Min(s.Length, max));
+#else
+            string s = string.Empty;
+            ConsoleKeyInfo key = new ConsoleKeyInfo();
+
+            do
+            {
+                if(Console.KeyAvailable)
+                {
+                    key = Console.ReadKey(true);
+                    switch(key.Key)
+                    {
+                        case ConsoleKey.Backspace:
+                            if(s.Length > 0)
+                            {
+                                s = s.Remove(s.Length-1, 1);
+                                Console.Write(key.KeyChar);
+                            }
+                            break;
+                        case ConsoleKey.Enter:
+                            break;
+                        default:
+                            s += key.KeyChar;
+                            Console.Write(key.KeyChar);
+                            break;
+                    }
+                }
+            }
+            while(key.Key != ConsoleKey.Enter);
+
+#if WINDOWS
+            Console.MoveBufferArea(0, 0, Console.WindowWidth, _lines, 0, 1);
+#endif
+            Console.WriteLine(string.Empty);
+            return s;
+#endif
+        }
 
 		public char ReadChar()
 		{
@@ -97,22 +107,28 @@ namespace ConsoleZMachine
 
 		public void SetCursor(ushort line, ushort column, ushort window)
 		{
-			Console.SetCursorPosition(column-1, line-1);
-		}
+#if WINDOWS
+            Console.SetCursorPosition(column-1, line-1);
+#endif
+        }
 
-		public void SetWindow(ushort window)
-		{
-			if(window == 0)
-				Console.SetCursorPosition(0, Console.WindowHeight-1);
-		}
+        public void SetWindow(ushort window)
+        {
+#if WINDOWS
+            if(window == 0)
+                Console.SetCursorPosition(0, Console.WindowHeight-1);
+#endif
+        }
 
-		public void EraseWindow(ushort window)
-		{
-			ConsoleColor c = Console.BackgroundColor;
-			Console.BackgroundColor = _defaultBack;
-			Console.Clear();
-			Console.BackgroundColor = c;
-		}
+        public void EraseWindow(ushort window)
+        {
+            ConsoleColor c = Console.BackgroundColor;
+            Console.BackgroundColor = _defaultBack;
+#if WINDOWS
+            Console.Clear();
+#endif
+            Console.BackgroundColor = c;
+        }
 
 		public void BufferMode(bool buffer)
 		{
@@ -158,13 +174,15 @@ namespace ConsoleZMachine
 
 		public void SoundEffect(ushort number)
 		{
-			if(number == 1)
-				Console.Beep(2000, 300);
-			else if(number == 2)
-				Console.Beep(250, 300);
-			else
-				throw new Exception("Sound > 2");
-		}
+#if WINDOWS
+            if(number == 1)
+                Console.Beep(2000, 300);
+            else if(number == 2)
+                Console.Beep(250, 300);
+            else
+                throw new Exception("Sound > 2");
+#endif
+        }
 
 		public void Quit()
 		{

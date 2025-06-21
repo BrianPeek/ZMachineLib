@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard1.2</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Brian Peek</Authors>
     <Company>Brian Peek</Company>
@@ -11,12 +10,6 @@
     <PackageProjectUrl>https://github.com/BrianPeek/ZMachineLib</PackageProjectUrl>
     <PackageTags>zmachine z-machine infocom if interactive fiction text adventure</PackageTags>
     <Version>1.0.0</Version>
-	<PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
-  </ItemGroup>
-
 </Project>
